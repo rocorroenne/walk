@@ -19,7 +19,7 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y)
 
 # Interface utilisateur Streamlit
-st.title("Prediction of Independent Walking after prenatal myelomeningocele repair")
+st.title("Prediction of Independent Ambulation Following Prenatal Myelomeningocele Repair")
 st.write("Enter the following information to determine the probability of independent walking at 30 months of age (%)")
 
 # Widgets pour entrer les variables
