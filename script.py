@@ -20,7 +20,7 @@ model.fit(X, y)
 
 # Interface utilisateur Streamlit
 st.title("Prediction of Independent Ambulation Following Prenatal Myelomeningocele Repair")
-st.write("Enter the following information to determine the probability of independent walking at 30 months of age (%)")
+st.write("Enter the following information to estimate the probability (%) of independent walking at 30 months of age")
 
 # Widgets pour entrer les variables
 below_L2 = st.selectbox("Anatomical level of lesion below Lumbar two level", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
