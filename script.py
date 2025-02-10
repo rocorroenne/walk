@@ -19,13 +19,13 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y)
 
 # Interface utilisateur Streamlit
-st.title("Prediction of Independent Walking")
+st.title("Prediction of Independent Walking after prenatal myelomeningocele repair")
 st.write("Enter the following information to determine the probability of independent walking at 30 months of age (%)")
 
 # Widgets pour entrer les variables
 below_L2 = st.selectbox("Anatomical level of lesion below Lumbar two level", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
 mf = st.selectbox("Intact motor fuction at the time of referral", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-tOL = st.selectbox("Type of lesion", [1, 2], format_func=lambda x: "cystic lesion" if x == 1 else "flat lesion")
+tOL = st.selectbox("Type of lesion", [1, 2], format_func=lambda x: "Flat lesion" if x == 1 else "Cystic lesion")
 
 # Bouton de prédiction
 if st.button("Prediction"):
