@@ -10,7 +10,7 @@ df = pd.read_excel(FILE_PATH, sheet_name="data")
 # Gérer les valeurs manquantes
 df["mf"].fillna(df["mf"].mode()[0], inplace=True)
 
-# Définition des variables explicatives et cible (ajout de gender)
+# Définition des variables explicatives et cible
 X = df[["below_L2", "mf", "tOL", "gender"]]
 y = df["walk_indep"]
 
