@@ -19,16 +19,16 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y)
 
 # Interface utilisateur Streamlit
-st.title("Prédiction de la Marche Indépendante")
-st.write("Entrez les paramètres pour obtenir une probabilité (%)")
+st.title("Prediction of Independent Walking")
+st.write("Enter the following information to determine the probability of independent walking at 30 months of age (%)")
 
 # Widgets pour entrer les variables
-below_L2 = st.selectbox("Lésion en dessous de L2 ?", [0, 1], format_func=lambda x: "Oui" if x == 1 else "Non")
-mf = st.selectbox("mf (1 = Oui, 0 = Non)", [0, 1])
-tOL = st.selectbox("tOL (1 ou 2)", [1, 2])
+below_L2 = st.selectbox("Anatomical level of lesion below Lumbar two level", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+mf = st.selectbox("Intact motor fuction at the time of referral", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+tOL = st.selectbox("Type of lesion", [1, 2], format_func=lambda x: "cystic lesion" if x == 1 else "flat lesion")
 
 # Bouton de prédiction
-if st.button("Prédire"):
+if st.button("Prediction"):
     input_data = pd.DataFrame([[below_L2, mf, tOL]], columns=X.columns)
     prediction_proba = model.predict_proba(input_data)[0, 1]  # Probabilité de marcher indépendamment
-    st.success(f"Probabilité de marcher indépendamment : {prediction_proba * 100:.1f}%")
+    st.success(f"Prediction of independent ambulation at 30 months : {prediction_proba * 100:.1f}%")
