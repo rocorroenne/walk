@@ -28,7 +28,7 @@ st.title("Ambulation Prediction Following Prenatal Myelomeningocele Repair")
 
 st.write("Enter the following information to estimate the probability (%) of independent or assisted walking at 30 months of age.")
 
-# Widgets pour entrer les variables
+# Widgets pour entrer les variables (identiques pour les deux calculateurs)
 below_L2 = st.selectbox("Anatomical level of lesion below Lumbar two level", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
 club_feet = st.selectbox("Presence of club feet", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
 tOL = st.selectbox("Type of lesion", [1, 2], format_func=lambda x: "Flat lesion" if x == 1 else "Cystic lesion")
@@ -37,15 +37,17 @@ gender = st.selectbox("Gender", [1, 2], format_func=lambda x: "Male" if x == 1 e
 # Création d'un DataFrame pour la prédiction
 input_data = pd.DataFrame([[below_L2, club_feet, tOL, gender]], columns=X.columns)
 
-# Boutons de prédiction
-col1, col2 = st.columns(2)
+# Premier calculateur : Prediction of Independent Walking
+st.header("🦵 Prediction of Independent Walking")
+if st.button("Predict Independent Walking"):
+    prediction_proba_indep = model_indep.predict_proba(input_data)[0, 1]  # Probabilité de marche indépendante
+    st.success(f"Probability of independent ambulation at 30 months: {prediction_proba_indep * 100:.1f}%")
 
-with col1:
-    if st.button("Predict Independent Walking"):
-        prediction_proba_indep = model_indep.predict_proba(input_data)[0, 1]  # Probabilité de marche indépendante
-        st.success(f"Probability of independent ambulation at 30 months: {prediction_proba_indep * 100:.1f}%")
+# Séparation visuelle entre les deux calculateurs
+st.markdown("---")
 
-with col2:
-    if st.button("Predict Assisted Walking (Brace)"):
-        prediction_proba_brace = model_brace.predict_proba(input_data)[0, 1]  # Probabilité de marche assistée avec attelle
-        st.success(f"Probability of assisted ambulation (brace) at 30 months: {prediction_proba_brace * 100:.1f}%")
+# Deuxième calculateur : Prediction of Assisted Walking (Brace)
+st.header("🦿 Prediction of Assisted Walking (Brace)")
+if st.button("Predict Assisted Walking (Brace)"):
+    prediction_proba_brace = model_brace.predict_proba(input_data)[0, 1]  # Probabilité de marche assistée avec attelle
+    st.success(f"Probability of assisted ambulation (brace) at 30 months: {prediction_proba_brace * 100:.1f}%")
