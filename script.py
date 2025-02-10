@@ -47,7 +47,7 @@ if st.button("Predict Independent Walking"):
 st.markdown("---")
 
 # Deuxième calculateur : Prediction of Assisted Walking (Brace)
-st.header("🦿 Prediction of Assisted Walking (Brace)")
+st.header("🦿 Prediction of Independent Walking + Assisted Walking (Brace)")
 if st.button("Predict Assisted Walking (Brace)"):
     prediction_proba_brace = model_brace.predict_proba(input_data)[0, 1]  # Probabilité de marche assistée avec attelle
     st.success(f"Probability of assisted ambulation (brace) at 30 months: {prediction_proba_brace * 100:.1f}%")
