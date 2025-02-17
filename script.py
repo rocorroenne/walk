@@ -42,4 +42,4 @@ input_data = pd.DataFrame([[below_L2, mf, tOL, gender]], columns=X.columns)
 st.header("🦿 Prediction of Independent Walking +/- Brace")
 if st.button("Predict Independent Walking +/- Brace"):
     prediction_proba_brace = model_brace.predict_proba(input_data)[0, 1]  # Probabilité de marche assistée avec attelle
-    st.success(f"Probability of assisted ambulation (brace) at 30 months: {prediction_proba_brace * 100:.1f}%")
+    st.success(f"Probability of independent ambulation (+/- brace) at 30 months: {prediction_proba_brace * 100:.1f}%")
