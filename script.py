@@ -37,16 +37,8 @@ gender = st.selectbox("Gender", [1, 2], format_func=lambda x: "Male" if x == 1 e
 # Création d'un DataFrame pour la prédiction
 input_data = pd.DataFrame([[below_L2, mf, tOL, gender]], columns=X.columns)
 
-# Premier calculateur : Prediction of Independent Walking
-st.header("🦵 Prediction of Independent Walking")
-if st.button("Predict Independent Walking"):
-    prediction_proba_indep = model_indep.predict_proba(input_data)[0, 1]  # Probabilité de marche indépendante
-    st.success(f"Probability of independent ambulation at 30 months: {prediction_proba_indep * 100:.1f}%")
 
-# Séparation visuelle entre les deux calculateurs
-st.markdown("---")
-
-# Deuxième calculateur : Prediction of Assisted Walking (Brace)
+# Prediction of Assisted Walking (Brace)
 st.header("🦿 Prediction of Independent Walking +/- Brace")
 if st.button("Predict Independent Walking +/- Brace"):
     prediction_proba_brace = model_brace.predict_proba(input_data)[0, 1]  # Probabilité de marche assistée avec attelle
