@@ -31,7 +31,7 @@ st.write("Enter the following information to estimate the probability (%) of ind
 # Widgets pour entrer les variables (identiques pour les deux calculateurs)
 below_L2 = st.selectbox("Anatomical level of lesion below Lumbar two level", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
 mf = st.selectbox("Intact motor function at the time of referral", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-tOL = st.selectbox("Type of lesion", [1, 2], format_func=lambda x: "Flat lesion" if x == 1 else "Cystic lesion")
+tOL = st.selectbox("Type of lesion", [1, 2], format_func=lambda x: "Cystic lesion" if x == 1 else "Flat lesion")
 gender = st.selectbox("Gender", [1, 2], format_func=lambda x: "Male" if x == 1 else "Female")
 
 # Création d'un DataFrame pour la prédiction
